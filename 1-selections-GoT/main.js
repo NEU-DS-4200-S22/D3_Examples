@@ -1,0 +1,7 @@
+d3.select('.house')
+d3.select('.house').size()
+d3.select('.house').node()
+d3.select('.house').text('Targaryen')
+d3.select('.name').text('Aegon')
+d3.select('tr:nth-child(4) .char').text('Evil')
+d3.selectAll('.rate').text('3')
