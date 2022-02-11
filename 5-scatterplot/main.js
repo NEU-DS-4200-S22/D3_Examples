@@ -34,9 +34,7 @@ let yScale = d3.scaleLinear()
 
 let xScale = d3.scaleBand()
   .domain(
-    data.map(function(d) {
-      return d.name;
-    })
+    data.map(d => d.name)
   )
   .range([margin.left, width - margin.right])
   .padding(0.5);
@@ -74,10 +72,8 @@ let circle = svg
     .data(data)
   .enter()
   .append('circle')
-    .attr('cx', function(d) {
-      return xScale(d.name) + .5 * xScale.bandwidth();
-    })
-    .attr('cy', function(d) {
-      return yScale(d.rating);
-    })
-    .attr('r', 3);
+    .attr('cx', d => xScale(d.name) +
+       .5 * xScale.bandwidth())
+    .attr('cy', d => yScale(d.rating))
+    .attr('r', 6)
+    .attr('fill', 'steelblue');

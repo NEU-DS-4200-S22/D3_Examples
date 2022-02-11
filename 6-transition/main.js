@@ -34,9 +34,7 @@ let yScale = d3.scaleLinear()
 
 let xScale = d3.scaleBand()
   .domain(
-    data.map(function(d) {
-      return d.name;
-    })
+    data.map(d => d.name)
   )
   .range([margin.left, width - margin.right])
   .padding(0.5);
@@ -74,17 +72,13 @@ let bar = svg
     .data(data)
   .enter()
   .append('rect')
-    .attr('x', function(d) {
-      return xScale(d.name);
-    })
-    .attr('y', function(d) {
-      return yScale(d.rating);
-    })
+    .attr('x', d => xScale(d.name))
+    .attr('y', d => yScale(d.rating))
     .attr('width', xScale.bandwidth())
-    .attr('fill', 'steelblue')
-    .attr('height', function(d) {
-      return height - margin.bottom - yScale(d.rating);
-    });
+    .attr('height', d => 
+          height - margin.bottom - yScale(d.rating)
+      )
+      .attr('fill', 'steelblue');
 
 //Interaction
 bar
